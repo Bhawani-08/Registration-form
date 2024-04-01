@@ -10,12 +10,18 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            print(form.save())
-            
-            return redirect('registration_success/')
+            form.save()
+            return render(request, 'login.html')
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
 
 def registration_success(request):
     return render(request, 'registration_success.html')       
+
+
+def login(request):
+    return render (request , 'login.html')
+
+
+
